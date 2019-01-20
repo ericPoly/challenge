@@ -1,0 +1,36 @@
+<div class="title">
+    <h1>
+      Toronto Waste Lookup
+    </h1>
+  </div>
+  
+  <div id="search-form" >
+    <input [(ngModel)]="searchTerm" id="search-bar" type="text" placeholder="Search.." name="search" (keyup)="checkEntry()" (keyup.enter)="findDatasToDisplay()">
+    <button id="search-button" (click)="findDatasToDisplay()"><i class="fas fa-search"></i></button>
+  </div>
+  
+  <ng-container *ngFor="let result of datas">
+  <div class="container">
+
+    <div class="left">
+      <i id="starEmpty" [class.star]="result.favorite" class="fas fa-star" (click)="favoriteChecking(result.title)"></i>{{result.title}}
+    </div>
+
+    <div class="right" [innerHTML]="result.body"></div>
+
+  </div>
+  </ng-container>
+
+  <div id="favourite" *ngIf="favoriteDatas.length >=2">
+    <h2>Favourites</h2>
+
+    <ng-container *ngFor="let result of favoriteDatas">
+      <div class="container">
+      <div class="left">
+        <i class="fas fa-star star"></i>{{result.title}}
+      </div>
+      <div class="right" [innerHTML]="result.body"></div>
+      </div>
+    </ng-container>
+
+  </div>
