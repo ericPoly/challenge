@@ -40,6 +40,8 @@ export class SearchService {
     return datasToDisplay;
   }
 
+  /*Check if the selected entry was already favourite or not and then find all current favourite entries */
+
   public favoriteChecking(title): string[]{
     let favorites = [];
     this.datas.forEach((e) => {

@@ -22,11 +22,12 @@ export class SearchComponent implements OnInit {
       data.forEach(element => {
         element.body = this.decodeHtml(element.body)
         let data = new Datas(element.body, element.category, element.title, element.keywords, false);
-        console.log()
       });
     })
 
   }
+
+  /*Convert the json body to HTML*/
 
   public decodeHtml(body: string) {
       var newElement = document.createElement('div');
@@ -39,10 +40,14 @@ export class SearchComponent implements OnInit {
       }
   }
 
+  /*Find datas related to the entry value */
+
   public findDatasToDisplay(): void {
     this.datas = this.searchService.findDatasToDisplay(this.searchTerm);
   }
 
+  /*Clean the result display if the search entry is empty*/
+  
   public checkEntry():  void {
     if(this.searchTerm === "") {
       this.datas = [];
